@@ -36,7 +36,7 @@ function NavigationBar() {
         </Container>
         <>
           You are logged in as {user} 
-          <Button onClick={LogOut} style={{marginInline:"20px"}} type="button"  variant="light">Logout</Button >
+          <Button onClick={LogOut} style={{marginInline:"20px"}} type="button"  variant="light">Log Out</Button >
         </>
 
       </Navbar>
