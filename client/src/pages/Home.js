@@ -1,11 +1,14 @@
 import React from "react";
 import logo from "../logo.svg";
 import "../App.css";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 function Home() {
+  const user = useContext(UserContext);
   const [data, setData] = React.useState(null);
   const [name,setName] = React.useState(null);
-
+  console.log(user)
   React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())

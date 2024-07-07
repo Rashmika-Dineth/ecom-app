@@ -12,10 +12,11 @@ from 'mdb-react-ui-kit';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 function Login() {
-  
+  const {setUser} = useContext(UserContext);
   const provider = new GoogleAuthProvider();
   provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
@@ -31,7 +32,8 @@ function Login() {
       // Signed in 
       const user = userCredential.user;
       console.log(user)
-      window.location.href = '/';
+      setUser(user.email)
+      //window.location.href = '/';
     })
     .catch((error) => {
       const errorCode = error.code;

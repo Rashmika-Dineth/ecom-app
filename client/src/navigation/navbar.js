@@ -2,8 +2,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 function NavigationBar() {
+  const {user} = useContext(UserContext);
   return (
     <>
       <Navbar bg="primary" data-bs-theme="dark">
@@ -17,6 +20,8 @@ function NavigationBar() {
             <Nav.Link href="/blogs">Blogs</Nav.Link>
           </Nav>
         </Container>
+<>You are logged in as {user}</>
+
       </Navbar>
       <Outlet />
     </>
