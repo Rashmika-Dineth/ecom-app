@@ -12,13 +12,26 @@ import NavigationBar from './navigation/navbar';
 import AdminPage from './pages/Admin';
 import Product from './pages/Product';
 import { useState, createContext } from "react";
-
+import { onAuthStateChanged } from "firebase/auth";
 export const UserContext = createContext({user:'',setUser:()=>{}})
 
 function App() {
   const [user, setUser] = useState("Guest");
   // Initialize Firebase Authentication and get a reference to the service
-  getAuth(app);
+
+  const auth = getAuth(app);
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+    //const uid = user.uid;
+    setUser(user.email)
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
   return (
     <UserContext.Provider value={{user,setUser}}>

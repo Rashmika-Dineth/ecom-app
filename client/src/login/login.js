@@ -33,7 +33,7 @@ function Login() {
       const user = userCredential.user;
       console.log(user)
       setUser(user.email)
-      //window.location.href = '/';
+      window.location.href = '/';
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -79,8 +79,8 @@ function Login() {
               <h2 className="fw-bold mb-5">Login Now</h2>
     
    
-              <MDBInput wrapperClass='mb-4' label='Email' id='form1' type='email' onChange={e=>setEmail(e.target.value)}/>
-              <MDBInput wrapperClass='mb-4' label='Password' id='form1' type='password' onChange={e=> setPassword(e.target.value)}/>
+              <MDBInput wrapperClass='mb-4' label='Email' id='email' type='email' onChange={e=>setEmail(e.target.value)}/>
+              <MDBInput wrapperClass='mb-4' label='Password' id='password' type='password' onChange={e=> setPassword(e.target.value)}/>
     
               <div className='d-flex justify-content-center mb-4'>
                 <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />

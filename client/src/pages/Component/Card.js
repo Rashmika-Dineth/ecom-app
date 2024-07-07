@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 function Item(props) {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', margin:"50px"}} key={props.Item.id}>
       <Card.Img variant="top" src={props.Item.url} />
       <Card.Body>
         <Card.Title>{props.Item.name}</Card.Title>

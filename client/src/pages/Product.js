@@ -25,11 +25,9 @@ function Product() {
     return ( 
         <div>
             
-            <ImageList cols={3} rowHeight={200} style={{margin:"20px"}}>
-                {data.map((x) => (
-                    
-                       <Item Item={x} />
-                   
+            <ImageList cols={4} rowHeight={200} style={{margin:"20px"}}>
+                {data.map((x) => ( 
+                       <Item Item={x} key={x._id}/>  
                 ))}
             </ImageList>
         
