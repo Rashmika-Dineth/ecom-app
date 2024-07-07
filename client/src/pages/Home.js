@@ -21,9 +21,9 @@ function Home() {
   }, []);
 
   return (
-    <>
+    <div style={{ backgroundColor: "black" }}>
       <>
-        <span className="d-block p-2 bg-primary text-white">
+        <span className="d-block p-2 text-white">
           <MDBContainer>
             <MDBRow>
               <MDBCol size="md">
@@ -48,7 +48,7 @@ function Home() {
           </div>
         </span>
       </>
-    </>
+    </div>
   );
 }
 
