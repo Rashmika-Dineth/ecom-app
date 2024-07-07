@@ -13,6 +13,9 @@ import AdminPage from './pages/Admin';
 import Product from './pages/Product';
 import { useState, createContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import Maps from './pages/Maps';
+
+
 export const UserContext = createContext({user:'',setUser:()=>{}})
 
 function App() {
@@ -45,6 +48,7 @@ function App() {
           <Route path="*" element={<NoPage />} />
           <Route path="admin" element={<AdminPage />} />
           <Route path="product" element={<Product />} />
+          <Route path="maps" element={<Maps />} />
         </Route>
       </Routes>
     </BrowserRouter>

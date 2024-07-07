@@ -32,6 +32,7 @@ function NavigationBar() {
             <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link href="/signUp">SignUp</Nav.Link>
             <Nav.Link href="/blogs">Blogs</Nav.Link>
+            <Nav.Link href="/maps">Location</Nav.Link>
           </Nav>
         </Container>
         <>
