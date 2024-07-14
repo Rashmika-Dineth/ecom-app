@@ -2,6 +2,25 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 function Item(props) {
+  function AddToCart() {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        uid: props.uid,
+        product_id: props.Item._id,
+        price: props.Item.price,
+      }),
+    };
+    fetch("/api/addToCart", requestOptions).then((response) =>
+      response
+        .json()
+        .then(
+          console.log("Product ", props.Item._id, "Added to cart successfully")
+        )
+    );
+  }
+
   return (
     <Card style={{ width: "18rem", margin: "50px" }} key={props.Item.id}>
       <Card.Img variant="top" src={props.Item.url} />
@@ -9,7 +28,11 @@ function Item(props) {
         <Card.Title>{props.Item.name}</Card.Title>
         <Card.Text>{props.Item.description}</Card.Text>
         <h1>Price : {props.Item.price}</h1>
-        <Button variant="primary" disabled={props.disabled}>
+        <Button
+          onClick={AddToCart}
+          variant="primary"
+          disabled={props.uid === ""}
+        >
           Add to Cart
         </Button>
       </Card.Body>

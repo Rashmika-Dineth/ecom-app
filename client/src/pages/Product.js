@@ -22,7 +22,7 @@ function Product() {
       <div>
         <ImageList cols={4} rowHeight={200} style={{ margin: "20px" }}>
           {data.map((x) => (
-            <Item Item={x} key={x._id} disabled={uid === ""} />
+            <Item Item={x} key={x._id} uid={uid} />
           ))}
         </ImageList>
       </div>
