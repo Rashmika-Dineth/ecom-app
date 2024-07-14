@@ -42,6 +42,7 @@ function NavigationBar() {
         <Button
           onClick={() => navigate("/cart")}
           style={{ marginInline: "25px" }}
+          disabled={count == 0}
         >
           <i className="bi bi-cart" style={{ marginInline: "25px" }}>
             {count}

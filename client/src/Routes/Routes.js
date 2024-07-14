@@ -8,6 +8,7 @@ import AdminPage from "../pages/Admin";
 import Product from "../pages/Product";
 import Login from "../pages/login/login";
 import Maps from "../pages/Maps";
+import Cart from "../pages/Cart";
 
 function RoutesComponent() {
   return (
@@ -22,6 +23,7 @@ function RoutesComponent() {
           <Route path="admin" element={<AdminPage />} />
           <Route path="product" element={<Product />} />
           <Route path="maps" element={<Maps />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>
