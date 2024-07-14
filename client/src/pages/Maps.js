@@ -24,7 +24,7 @@ export default function Maps() {
             <div style={{ height: "100vh", width: "100%" }}>
               <GoogleMapReact
                 bootstrapURLKeys={{
-                  key: "",
+                  key: process.env.REACT_APP_API_KEY,
                 }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
@@ -32,7 +32,7 @@ export default function Maps() {
                 <AnyReactComponent
                   lat={7.019529}
                   lng={79.9}
-                  text="SLT_NEBULA"
+                  text={process.env.REACT_APP_PLACE_NAME}
                 />
               </GoogleMapReact>
             </div>
