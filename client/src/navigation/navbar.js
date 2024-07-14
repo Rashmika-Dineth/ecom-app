@@ -1,24 +1,26 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import { Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import { getAuth, signOut } from "firebase/auth";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 function NavigationBar() {
+  const { user, setUser, setUid } = useContext(UserContext);
 
-  const {user, setUser} = useContext(UserContext);
-  
-  function LogOut(){
+  function LogOut() {
     const auth = getAuth();
-    signOut(auth).then(() => {
-      setUser('Guest')
-      // Sign-out successful.
-    }).catch((error) => {
-    // An error happened.
-    });
+    signOut(auth)
+      .then(() => {
+        setUser("Guest");
+        setUid("");
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   }
 
   return (
@@ -36,10 +38,16 @@ function NavigationBar() {
           </Nav>
         </Container>
         <>
-          You are logged in as {user} 
-          <Button onClick={LogOut} style={{marginInline:"20px"}} type="button"  variant="light">Log Out</Button >
+          You are logged in as {user}
+          <Button
+            onClick={LogOut}
+            style={{ marginInline: "20px" }}
+            type="button"
+            variant="light"
+          >
+            Log Out
+          </Button>
         </>
-
       </Navbar>
       <Outlet />
     </>
