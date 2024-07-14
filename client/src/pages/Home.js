@@ -10,7 +10,7 @@ function Home() {
   const user = useContext(UserContext);
   const [data, setData] = React.useState(null);
   const [name, setName] = React.useState(null);
-  console.log(user);
+  // console.log(user);
   React.useEffect(() => {
     fetch("/api")
       .then((res) => res.json())
@@ -24,7 +24,7 @@ function Home() {
     <div style={{ backgroundColor: "black" }}>
       <>
         <span className="d-block p-2 text-white">
-          <MDBContainer class="container-fluid">
+          <MDBContainer className="container-fluid">
             <MDBRow>
               <CarosalComponent />
             </MDBRow>

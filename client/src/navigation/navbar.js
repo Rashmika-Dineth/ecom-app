@@ -7,8 +7,10 @@ import { UserContext } from "../App";
 import { getAuth, signOut } from "firebase/auth";
 import Button from "react-bootstrap/Button";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useNavigate } from "react-router-dom";
 
 function NavigationBar() {
+  const navigate = useNavigate();
   const { user, setUser, setUid, count } = useContext(UserContext);
 
   function LogOut() {
@@ -38,8 +40,11 @@ function NavigationBar() {
             <Nav.Link href="/maps">Location</Nav.Link>
           </Nav>
         </Container>
-        <Button>
-          <i class="bi bi-cart" style={{ marginInline: "25px" }}>
+        <Button
+          onClick={() => navigate("/cart")}
+          style={{ marginInline: "25px" }}
+        >
+          <i className="bi bi-cart" style={{ marginInline: "25px" }}>
             {count}
           </i>
         </Button>
