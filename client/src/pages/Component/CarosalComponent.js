@@ -10,6 +10,7 @@ export default function CarosalComponent() {
     <MDBCarousel showIndicators showControls fade>
       <MDBCarouselItem itemId={1}>
         <img
+          height={"400px"}
           src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
           className="d-block w-100"
           alt="..."
@@ -22,6 +23,7 @@ export default function CarosalComponent() {
 
       <MDBCarouselItem itemId={2}>
         <img
+          height={"400px"}
           src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
           className="d-block w-100"
           alt="..."
@@ -34,6 +36,7 @@ export default function CarosalComponent() {
 
       <MDBCarouselItem itemId={3}>
         <img
+          height={"400px"}
           src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
           className="d-block w-100"
           alt="..."

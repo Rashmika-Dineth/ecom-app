@@ -4,7 +4,7 @@ import "../App.css";
 import { useContext } from "react";
 import { UserContext } from "../App";
 import CarosalComponent from "./Component/CarosalComponent";
-import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 
 function Home() {
   const user = useContext(UserContext);
@@ -24,17 +24,9 @@ function Home() {
     <div style={{ backgroundColor: "black" }}>
       <>
         <span className="d-block p-2 text-white">
-          <MDBContainer>
+          <MDBContainer class="container-fluid">
             <MDBRow>
-              <MDBCol size="md">
-                <CarosalComponent />
-              </MDBCol>
-              <MDBCol size="md">
-                <CarosalComponent />
-              </MDBCol>
-              <MDBCol size="md">
-                <CarosalComponent />
-              </MDBCol>
+              <CarosalComponent />
             </MDBRow>
           </MDBContainer>
         </span>
