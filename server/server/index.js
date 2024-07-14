@@ -37,18 +37,45 @@ async function getProducts() {
   return "done.";
 }
 
-async function GetOrder() {
+async function GetOrder(uid) {
   // Use connect method to connect to the server
   await client.connect();
   console.log("Connected successfully to server");
   const db = client.db(dbName);
   const collection = db.collection("orders");
-
   // the following code examples can be pasted here...
   const findResult = await collection.find({}).toArray();
-  console.log("Found documents =>", findResult);
-  resResult = findResult;
+  filterResult = findResult.filter((x) => x.uid == uid);
+  resResult = filterResult;
   return findResult;
+}
+async function GetCart(uid) {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log("Connected successfully to server");
+  const db = client.db(dbName);
+  const collectionOrder = db.collection("orders");
+  const collectionProducts = db.collection("products");
+  // the following code examples can be pasted here...
+  const orders = await collectionOrder.find({}).toArray();
+  filterOlders = orders.filter((x) => x.uid == uid);
+
+  const products = await collectionProducts.find({}).toArray();
+
+  //console.log("Products", products);
+  //console.log("Fileter", filterOlders);
+
+  const cartArray = [];
+  products.map((x) => {
+    filterOlders.map((y) => {
+      if (y.pid == x._id.toString()) {
+        cartArray.push(x);
+      }
+    });
+  });
+
+  resResult = cartArray;
+  return "Success";
 }
 
 async function postData(name, id) {
@@ -122,12 +149,22 @@ app.get("/api/getproducts", (req, res) => {
     });
 });
 
-app.get("/api/getordercount", (req, res) => {
-  GetOrder()
+app.post("/api/getordercount", (req, res) => {
+  GetOrder(req.body.uid)
     .then()
     .catch(console.error)
     .finally(() => {
       res.json(resResult.length);
+      client.close();
+    });
+});
+
+app.post("/api/getcart", (req, res) => {
+  GetCart(req.body.uid)
+    .then()
+    .catch(console.error)
+    .finally(() => {
+      res.json(resResult);
       client.close();
     });
 });

@@ -12,14 +12,6 @@ function App() {
   const [uid, setUid] = useState("");
   const [count, setCount] = useState("");
 
-  useEffect(() => {
-    fetch("/api/getordercount")
-      .then((res) => res.json())
-      .then((data) => {
-        setCount(data);
-      });
-  }, []);
-
   // Initialize Firebase Authentication and get a reference to the service
 
   const auth = getAuth(app);
@@ -38,6 +30,20 @@ function App() {
       console.log("User logged out");
     }
   });
+
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ uid }),
+  };
+
+  useEffect(() => {
+    fetch(`/api/getordercount`, requestOptions)
+      .then((res) => res.json())
+      .then((data) => {
+        setCount(data);
+      });
+  }, [uid]);
 
   return (
     <UserContext.Provider

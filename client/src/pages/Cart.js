@@ -11,11 +11,26 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../App";
 
 export default function Cart() {
-  const { count } = useContext(UserContext);
+  const { count, uid } = useContext(UserContext);
+
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ uid }),
+  };
+
+  useEffect(() => {
+    fetch(`/api/getcart`, requestOptions)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, [uid]);
+
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5 h-100">
