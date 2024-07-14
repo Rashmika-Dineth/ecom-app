@@ -26,7 +26,7 @@ function App() {
     fetch("/api/getordercount")
       .then((res) => res.json())
       .then((data) => {
-        setCount(data.length);
+        setCount(data);
       });
   }, []);
 

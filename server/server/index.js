@@ -127,7 +127,7 @@ app.get("/api/getordercount", (req, res) => {
     .then()
     .catch(console.error)
     .finally(() => {
-      res.json(resResult);
+      res.json(resResult.length);
       client.close();
     });
 });
