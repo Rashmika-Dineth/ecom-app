@@ -34,10 +34,9 @@ function NavigationBar() {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/product">Product</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/signUp">SignUp</Nav.Link>
             <Nav.Link href="/blogs">Blogs</Nav.Link>
-            <Nav.Link href="/maps">Location</Nav.Link>
+            <Nav.Link href="/maps">Contact Us</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
           </Nav>
         </Container>
         <Button

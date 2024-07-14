@@ -119,7 +119,9 @@ function Login() {
           </MDBBtn>
 
           <div className="text-center">
-            <p>or sign up with:</p>
+            <a href="./signUp">
+              <p>or sign up with:</p>
+            </a>
 
             <MDBBtn
               tag="a"
