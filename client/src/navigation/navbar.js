@@ -6,9 +6,10 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 import { getAuth, signOut } from "firebase/auth";
 import Button from "react-bootstrap/Button";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function NavigationBar() {
-  const { user, setUser, setUid } = useContext(UserContext);
+  const { user, setUser, setUid, count } = useContext(UserContext);
 
   function LogOut() {
     const auth = getAuth();
@@ -37,11 +38,16 @@ function NavigationBar() {
             <Nav.Link href="/maps">Location</Nav.Link>
           </Nav>
         </Container>
+        <Button>
+          <i class="bi bi-cart" style={{ marginInline: "25px" }}>
+            {count}
+          </i>
+        </Button>
         <>
           You are logged in as {user}
           <Button
             onClick={LogOut}
-            style={{ marginInline: "20px" }}
+            style={{ marginInline: "25px" }}
             type="button"
             variant="light"
           >

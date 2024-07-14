@@ -1,7 +1,11 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useContext } from "react";
+import { UserContext } from "../../App";
 
 function Item(props) {
+  const { count, setCount } = useContext(UserContext);
+
   function AddToCart() {
     const requestOptions = {
       method: "POST",
@@ -13,11 +17,10 @@ function Item(props) {
       }),
     };
     fetch("/api/addToCart", requestOptions).then((response) =>
-      response
-        .json()
-        .then(
-          console.log("Product ", props.Item._id, "Added to cart successfully")
-        )
+      response.json().then(() => {
+        console.log("Product ", props.Item.name, "Added to cart successfully");
+        setCount(count + 1);
+      })
     );
   }
 

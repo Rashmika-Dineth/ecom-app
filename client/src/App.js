@@ -11,7 +11,7 @@ import NoPage from "./pages/NoPage";
 import NavigationBar from "./navigation/navbar";
 import AdminPage from "./pages/Admin";
 import Product from "./pages/Product";
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import Maps from "./pages/Maps";
 
@@ -20,6 +20,16 @@ export const UserContext = createContext({ user: "", setUser: () => {} });
 function App() {
   const [user, setUser] = useState("Guest");
   const [uid, setUid] = useState("");
+  const [count, setCount] = useState("");
+
+  useEffect(() => {
+    fetch("/api/getordercount")
+      .then((res) => res.json())
+      .then((data) => {
+        setCount(data.length);
+      });
+  }, []);
+
   // Initialize Firebase Authentication and get a reference to the service
 
   const auth = getAuth(app);
@@ -38,7 +48,9 @@ function App() {
   });
 
   return (
-    <UserContext.Provider value={{ uid, user, setUser, setUid }}>
+    <UserContext.Provider
+      value={{ uid, user, setUser, setUid, count, setCount }}
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NavigationBar />}>
