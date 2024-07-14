@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SignUp from "../signup/signup";
+import SignUp from "../pages/signup/signup";
 import Home from "../pages/Home";
 import Blogs from "../pages/Blogs";
 import NoPage from "../pages/NoPage";
 import NavigationBar from "../navigation/navbar";
 import AdminPage from "../pages/Admin";
 import Product from "../pages/Product";
-import Login from "../login/login";
+import Login from "../pages/login/login";
 import Maps from "../pages/Maps";
 
 function RoutesComponent() {
